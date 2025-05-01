@@ -1,8 +1,4 @@
-Sure! Here's your complete **`README.md`** content for a GitHub repo that explains this project step-by-step in markdown:
 
----
-
-```markdown
 # 🚀 Node.js App Deployment on GKE using DockerHub
 
 ## 📘 Project Overview
@@ -23,7 +19,97 @@ nodejs-gke-deployment/
 ├── .dockerignore
 ├── .gitignore
 ```
+---
 
+## setup-file.py
+
+```python
+import os
+
+# Define base path
+base_path = "/home/lilia/VIDEOS/nodejs-gke-deployment"
+
+# File structure and their contents
+files = {
+    "app/app.js": """const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => res.send('Node.js App running on GKE 🚀'));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+""",
+    "app/package.json": """{
+  "name": "gke-node-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+""",
+    "Dockerfile": """FROM node:18
+WORKDIR /app
+COPY app/ .
+RUN npm install
+EXPOSE 3000
+CMD ["npm", "start"]
+""",
+    "deployment.yml": """apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: laly9999/gke-node-app:1
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+""",
+    ".dockerignore": """node_modules
+npm-debug.log
+""",
+    ".gitignore": """node_modules/
+.env
+"""
+}
+
+# Create directories and write files
+for relative_path, content in files.items():
+    full_path = os.path.join(base_path, relative_path)
+    os.makedirs(os.path.dirname(full_path), exist_ok=True)
+    with open(full_path, 'w') as f:
+        f.write(content)
+
+"✅ All files created successfully in /home/lilia/VIDEOS/nodejs-gke-deployment"
+
+
+```
 ---
 
 ## 🌍 Real-World Scenario
