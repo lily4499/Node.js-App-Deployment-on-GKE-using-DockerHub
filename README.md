@@ -1,5 +1,12 @@
 
 # 🚀 Node.js App Deployment on GKE using DockerHub
+---
+
+## 🌍 Real-World Scenario
+
+You’re a DevOps Engineer at a startup building a microservice architecture. Your task is to deploy a Node.js-based microservice to GKE using a container image hosted on DockerHub. This setup is often used in CI/CD pipelines for development and testing environments.
+
+---
 
 ## 📘 Project Overview
 
@@ -110,11 +117,7 @@ for relative_path, content in files.items():
 
 
 ```
----
 
-## 🌍 Real-World Scenario
-
-You’re a DevOps Engineer at a startup building a microservice architecture. Your task is to deploy a Node.js-based microservice to GKE using a container image hosted on DockerHub. This setup is often used in CI/CD pipelines for development and testing environments.
 
 ---
 
