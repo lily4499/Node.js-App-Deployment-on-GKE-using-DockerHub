@@ -3,8 +3,8 @@
 ---
 
 ## 🌍 Real-World Scenario
+> At **Data Service Group**, our development team needed a fast and scalable way to deploy a Node.js microservice for one of our internal analytics tools. We containerized the app using Docker, pushed the image to DockerHub, and deployed it to a Google Kubernetes Engine (GKE) cluster for seamless scaling and testing. This pipeline allowed us to test changes in a real cloud environment before promoting to production. By leveraging Kubernetes manifests, we ensured consistent and repeatable deployments across environments, significantly reducing onboarding time for new engineers and accelerating our release cycles.
 
-You’re a DevOps Engineer at a startup building a microservice architecture. Your task is to deploy a Node.js-based microservice to GKE using a container image hosted on DockerHub. This setup is often used in CI/CD pipelines for development and testing environments.
 
 ---
 
